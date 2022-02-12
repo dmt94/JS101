@@ -1,4 +1,6 @@
 /*
+CHALLENGE! 
+
 The parseInt() method converts a string of numeric characters 
 (including an optional plus or minus sign) to an integer. 
 
