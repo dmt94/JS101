@@ -1,0 +1,41 @@
+{
+  "en": {
+    "welcome": "Welcome to your personal Calculator! What is your name?",
+    "validName": "Please enter a valid name.",
+    "greeting": "Greetings",
+    "goodbye": "Take it easy and find your flow~ Bye",
+    "invalidNum": "Please enter a valid number.",
+    "firstNumber": "Enter first number:",
+    "secondNum": "Enter second number",
+    "chooseOp": "What operation would you like to perform?\n(Enter appropriate number)\n[1] - Add\n[2] - Subtract\n[3] - Multiply\n[4] - Divide",
+    "invalidO": "Please enter a valid operator choice.",
+    "result": "The result is: ",
+    "replay": "Would you like to perform another operation? (y/n)"
+  },
+  "es": {
+    "welcome": "¡Bienvenido a su Calculadora personal! ¿Cómo te llamas?",
+    "validName": "Por favor ingrese un nombre valido.",
+    "greeting": "Hola",
+    "goodbye": "Gracias por usar este programa,",
+    "invalidNum": "Por favor ingrese un número valido.",
+    "firstNumber": "Ingrese el primer número:",
+    "secondNum": "Ingrese el segundo número:",
+    "chooseOp": "Anong operasyon ang gusto mong gawin?\n(Ingrese el número apropiado)\n[1] - Suma\n[2] - Resta\n[3] - Multiplicación\n[4] - División",
+    "invalidO": "Por favor ingrese una opción de operador válida.",
+    "result": "El resultado es: ",
+    "replay": "¿Le gustaría realizar otra operación? (s/n)"
+  },
+  "tg": {
+    "welcome": "Maligayang pagdating sa iyong personal na kalkulator!\nAno ang pangalan mo?",
+    "validName": "Pakilagay ang iyong tamang pangalan",
+    "greeting": "Kumusta",
+    "goodbye": "Sana maging maganda ang araw at gabi mo~",
+    "invalidNum": "Pakilagay ng totoong numero.",
+    "firstNumber": "Ilagay ang unang numero:",
+    "secondNum": "Ilagay ang pangalawang numero:",
+    "chooseOp": "Anong operasyon ang gusto mong gawin?\n(i-type ang iyong pili)\n[1] - Adisyon\n[2] - Pagbabawas\n[3] - Multiplikasyon\n[4] - Dibisyon",
+    "invalidO": "Piliin ang tamang numero para sa iyong operasyon.",
+    "result": "Ang resulta ay: ",
+    "replay": "Gusto mo bang gumawa ng isa pang kalkulasyon? (oo/hindi)"
+  }
+}
