@@ -1,6 +1,6 @@
 const MESSAGES = require('./calculator_messages.json');
 
-const readline = require('readline-sync');
+let readline = require('readline-sync');
 
 function prompt(msg) {
   console.log(`=> ${msg}`);
@@ -23,89 +23,45 @@ function invalidName(nameInput) {
   return nameInput === '' || nameInput === null || nameInput === undefined
 }
 
-function invNameT(nInput, lang='en') {
-  return MESSAGES[lang][nInput];
-}
-
-function invNumT(numInput, lang='en') {
-  return MESSAGES[lang][numInput];
-}
-
-function invOp(oper, lang='en') {
-  return MESSAGES[lang][oper];
-}
-
-//greetings and goodbyes
-function messages(message, lang='en') {
-  return MESSAGES[lang][message];
-}
-
-function aGreeting(thegreeting, lang='en') {
-  return MESSAGES[lang][thegreeting];
-}
-
-function aGoodbye(bye, lang='en') {
-  return MESSAGES[lang][bye];
-}
-
-//input numbers and operations
-function enterFirst(fNum, lang='en') {
-  return MESSAGES[lang][fNum];
-}
-
-function enterSecond(sNum, lang='en') {
-  return MESSAGES[lang][sNum];
-}
-
-function enterOp(op, lang=en) {
-  return MESSAGES[lang][op];
-}
-
-//result message
-function resultL(theResult, lang=en) {
-  return MESSAGES[lang][theResult];
-}
-
-//ask to perform another operation
-function anotherOne(tryAgain, lang=en) {
-  return MESSAGES[lang][tryAgain];
-}
+function displayMessage(message, lang='en') {
+  return MESSAGES[lang][message]
+}//CONVENIENT H FOR THE WIN!
 
 // WELCOME MESSAGE - BEGIN
-prompt(messages('welcome', language)); //key, value
+prompt(displayMessage('welcome', language)); //key, value
 // ASK FOR USER NAME
 let username = readline.question();
 
 while (invalidName(username)) {
-  prompt(invNameT('validName', language));
+  prompt(displayMessage('validName', language));
   username = readline.question();
 }
 
-prompt(aGreeting('greeting', language) + ` ${username}!`);
+prompt(displayMessage('greeting', language) + ` ${username}!`);
 
 while (true) {
 
-  prompt(enterFirst('firstNumber', language));
+  prompt(displayMessage('firstNumber', language));
   let firstNum = readline.question();
 
   while (invalidNumber(firstNum)) {
-    prompt(invNumT('invalidNum', language));
+    prompt(displayMessage('invalidNum', language));
     firstNum = readline.question();
   }
 
-  prompt(enterSecond('secondNum', language))
+  prompt(displayMessage('secondNum', language))
   let secNum = readline.question();
 
   while (invalidNumber(secNum)) {
-    prompt(invNumT('invalidNum', language));
+    prompt(displayMessage('invalidNum', language));
     secNum = readline.question();
   }
 
-  prompt(enterOp('chooseOp', language));
+  prompt(displayMessage('chooseOp', language));
   let operation = readline.question();
 
   while (!['1', '2', '3', '4'].includes(operation)) {
-    prompt(invOp('invalidO', language));
+    prompt(displayMessage('invalidO', language));
     operation = readline.question();
   }
 
@@ -126,13 +82,13 @@ while (true) {
       break;
   }
 
-    prompt(resultL('result', language) + `${output}`);
+    prompt(displayMessage('result', language) + `${output}`);
 
-    prompt(anotherOne('replay', language));
+    prompt(displayMessage('replay', language));
     let answer = readline.question().toLowerCase();
 
   if (!['y', 'yes', 'si', 'oo'].includes(answer)) {
-    prompt(aGoodbye('goodbye', language) + ` ${username}!`);
+    prompt(displayMessage('goodbye', language) + ` ${username}!`);
     break;
   }
 }//end
