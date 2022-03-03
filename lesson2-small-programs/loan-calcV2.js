@@ -66,7 +66,7 @@ function getAPR() {
   if (Number(rate) === 0) {
     userInfo.monthlyR = 0;
     return 0;
-  } else if (Number(Number.isInteger(rate))) {
+  } else if (Number.isInteger(Number(rate))) {
     userInfo.monthlyR = (rate / 100) / 12;
     return userInfo.monthlyR;
   }
