@@ -77,7 +77,7 @@ function getAPR() {
 function getDuration() {
   prompt('What is your loan duration? (in months):');
   let loanD = rlSync.question();
-  while (invalidNum(loanD) || Number(loanD) > 540) {
+  while (invalidNum(loanD) || loanD > 540 || Number(loanD) < 1) {
     console.log('Please enter a valid number and duration. Maximum is 540 months (45 years):');
     loanD = rlSync.question();
   }
@@ -95,7 +95,7 @@ function calc(loanAmt, monthlyRate, loanDur) {
 
 function monthPayDisplay(monthPayment) {
   console.log('\n~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~~$~$~$~$~$~$');
-  prompt(`Your monthly payment is $${monthPayment.toFixed(2)}`);
+  prompt(`Monthly payment is => $${monthPayment.toFixed(2)}`);
   console.log('ଘ(✿˵•́ O •̀˵)');
   console.log('\n~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~$~~$~$~$~$~$~$\n');
 }
@@ -183,4 +183,10 @@ let userMPay = calc(userInfo.loan, userInfo.monthlyR, userInfo.duration);
 monthPayDisplay(userMPay);
 repeat();
 
-console.log(userInfo);
+console.log(`~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~`);
+console.log(`REVIEW:\n${userInfo.username}'s loan for $${userInfo.loan}, 
+with a monthly rate of ${userInfo.monthlyR.toFixed(2)} 
+will be fully paid within ${userInfo.duration} months 
+after an estimated monthly payment
+of => $${userMPay.toFixed(2)} !`);
+console.log(`~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~`);
