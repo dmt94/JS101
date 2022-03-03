@@ -1,5 +1,7 @@
 // debug.js
 
+
+let second = 2; 
 let counter = 1;
 /* when inspecting with a debugger
 that lets you pause the program during execution,
@@ -11,9 +13,11 @@ returns undefined bc the expression has not yet been
 evaluated and so assignment to 1 has not taken place
 */
 
-while (counter <= 5) {
+while (second <= 5) {
+  console.log(second);
   console.log(counter);
   debugger;
+  second += 1; 
   counter += 1;
 }
 

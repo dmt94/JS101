@@ -20,11 +20,11 @@ function invalidNumber(num) {
 }
 
 function invalidName(nameInput) {
-  return nameInput === '' || nameInput === null || nameInput === undefined
+  return nameInput === '' || nameInput === null || nameInput === undefined;
 }
 
-function displayMessage(message, lang='en') {
-  return MESSAGES[lang][message]
+function displayMessage(message, lang = 'en') {
+  return MESSAGES[lang][message];
 }//CONVENIENT H FOR THE WIN!
 
 // WELCOME MESSAGE - BEGIN
@@ -49,7 +49,8 @@ while (true) {
     firstNum = readline.question();
   }
 
-  prompt(displayMessage('secondNum', language))
+  prompt(displayMessage('secondNum', language));
+
   let secNum = readline.question();
 
   while (invalidNumber(secNum)) {
@@ -81,22 +82,14 @@ while (true) {
       output = Number(firstNum) / Number(secNum);
       break;
   }
+  prompt(displayMessage('result', language) + `${output}`);
 
-    prompt(displayMessage('result', language) + `${output}`);
+  prompt(displayMessage('replay', language));
 
-    prompt(displayMessage('replay', language));
-    let answer = readline.question().toLowerCase();
+  let answer = readline.question().toLowerCase();
 
   if (!['y', 'yes', 'si', 'oo'].includes(answer)) {
     prompt(displayMessage('goodbye', language) + ` ${username}!`);
     break;
   }
 }//end
-
-/*
-Bonus Features:
-1. ask user for another calculation
-2. extract messages in the program to a configuration file
-3. internationalize the messages in the calculator; 
-send configuration file to [translators] in your code
-*/
