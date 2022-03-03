@@ -90,3 +90,5 @@ function stringToSignedInteger(string) {
 console.log(stringToSignedInteger("-570"));
 console.log(stringToSignedInteger("+100"));
 console.log(stringToSignedInteger("20"));
+
+
