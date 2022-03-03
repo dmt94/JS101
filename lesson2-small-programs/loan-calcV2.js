@@ -55,8 +55,8 @@ function getLoanAmount() {
 
 function getAPR() {
   prompt('What is the Annual Percentage Rate?');
-  console.log('Enter in decimal or integer. 0 interest rate OK:');
-  console.log('0.05 for 5% or 5 for 5%');
+  console.log('Enter in decimal or integer. 0 interest rate OK.');
+  console.log('ex. [0.05 for 5%] or [5 for 5%]');
   let rate = rlSync.question();
 
   while (invalidNum(rate)) {
