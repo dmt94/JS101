@@ -55,15 +55,20 @@ function getLoanAmount() {
 
 function getAPR() {
   prompt('What is the Annual Percentage Rate?');
-  console.log('Enter in decimal notation (ex. 0.05 for 5%). 0 interest rate OK:');
+  console.log('Enter in decimal or integer. 0 interest rate OK:');
+  console.log('0.05 for 5% or 5 for 5%');
   let rate = rlSync.question();
+
+  while (invalidNum(rate)) {
+    prompt('Please enter a valid rate.');
+    rate = rlSync.question();
+  }
   if (Number(rate) === 0) {
     userInfo.monthlyR = 0;
     return 0;
-  }
-  while (invalidNum(rate) || Number.isInteger(Number(rate))) {
-    prompt('Please enter a valid rate.');
-    rate = rlSync.question();
+  } else if (Number(Number.isInteger(rate))) {
+    userInfo.monthlyR = (rate / 100) / 12;
+    return userInfo.monthlyR;
   }
   userInfo.monthlyR = rate / 12;
   return userInfo.monthlyR;
@@ -98,10 +103,11 @@ function monthPayDisplay(monthPayment) {
 function repeat() {
   prompt(`Would you like to do another calculation?\n('y' for yes and 'n' for no)`);
   let again = rlSync.question().toLowerCase();
-  if (again !== 'y' && again !== 'n') {
+  while (again !== 'y' && again !== 'n') {
     prompt(`Please enter 'y' or 'n'`);
     again = rlSync.question().toLowerCase();
-  } else if (again === 'y') {
+  }
+  if (again === 'y') {
     changeOrNewProfile();
   } else {
     farewellMsg();
@@ -176,3 +182,5 @@ start();
 let userMPay = calc(userInfo.loan, userInfo.monthlyR, userInfo.duration);
 monthPayDisplay(userMPay);
 repeat();
+
+console.log(userInfo);
