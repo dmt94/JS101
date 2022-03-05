@@ -5,44 +5,86 @@ function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
-function displayWinner(choice, computerChoice) {
-  prompt(`You chose ${choice}, computer chose ${computerChoice}`);
-
-  if ((choice === 'rock' && computerChoice === 'scissors') ||
-      (choice === 'paper' && computerChoice === 'rock') ||
-      (choice === 'scissors' && computerChoice === 'paper')) {
-    prompt('You win!');
-  } else if ((choice === 'rock' && computerChoice === 'paper') ||
-             (choice === 'paper' && computerChoice === 'scissors') ||
-             (choice === 'scissors' && computerChoice === 'rock')) {
-    prompt('Computer wins!');
-  } else {
-    prompt("It's a tie!");
-  }
+function greeting() {
+  prompt('ROCK PAPER SCISSORS GAME\nGreetings!');
+  console.log('(⇀‸↼‶)⊃━☆ﾟ.*･');
 }
 
-let replay;
-do {
+function farewellMsg() {
+  prompt('Thanks for playing ROCK PAPER SCISSORS!');
+  console.log('\nLive mindfully and happily! ٩(｡•́‿•̀｡)۶\n');
+}
+
+function userChooses() {
   prompt(`Choose one: ${VALID_CHOICES.join(', ')}`);
-  let choice = readline.question();
+  let choice = readline.question().toLowerCase();
 
   while (!VALID_CHOICES.includes(choice)) {
     prompt("Sorry. Not a valid choice.");
     choice = readline.question();
   }
 
+  return choice;
+}
+
+function compChooses() {
   let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
-  let computerChoice = VALID_CHOICES[randomIndex];
+  return VALID_CHOICES[randomIndex];
+}
 
-  prompt(`You choice ${choice}. Computer chose ${computerChoice}.`);
-
-  displayWinner(choice, computerChoice);
-
-  prompt("Would you like to play again? (y/n)");
-  replay = readline.question().toLowerCase();
-
-  while(replay[0] !== 'y' && replay[0] !== 'n') {
-    prompt("Please enter 'y' or 'n'");
-    replay = readline.question().toLowerCase();
+function userWon(choice, computerChoice) {
+  if ((choice === 'rock' && computerChoice === 'scissors') ||
+      (choice === 'paper' && computerChoice === 'rock') ||
+      (choice === 'scissors' && computerChoice === 'paper')) {
+    return true
+  } else if ((choice === 'rock' && computerChoice === 'paper') ||
+             (choice === 'paper' && computerChoice === 'scissors') ||
+             (choice === 'scissors' && computerChoice === 'rock')) {
+    return false
   }
-} while (replay[0] === 'y');
+  return 'tie';
+}
+
+function displayWinner(choice, computerChoice, whoWon) {
+  prompt(`You chose ${choice}. Computer chose ${computerChoice}\n`);
+
+  switch (whoWon) {
+    case true: 
+      return prompt('You won! ٩(｡•́‿•̀｡)۶ \n');
+    case false:
+      return prompt('You lost! Computer won ᕙ(⇀‸↼‶)ᕗ\n');
+    case 'tie':
+      return prompt('It\'s a tie!)\n');
+  }
+}
+
+function invalidAnswer(answer) {
+  return answer[0] !== 'n' && answer[0] !== 'y';
+}
+
+function playAgain() {
+  prompt("Do you want to play again? (y/n)");
+  let again = readline.question().toLowerCase();
+
+  while (invalidAnswer(again)) {
+    prompt("Please type a valid answer: 'y' or 'n'");
+    again = readline.question().toLowerCase();
+  }
+  return again;
+}
+
+greeting();
+
+while(true) {
+  let userChoice = userChooses();
+  let compChoice = compChooses();
+  let didUserWin = userWon(userChoice, compChoice);
+  let displayTheWinner = displayWinner(userChoice, compChoice, didUserWin);
+  let playAgainAnswer = playAgain();
+
+  if (playAgainAnswer[0] === 'n') break;
+
+  console.clear();
+} 
+
+farewellMsg();
