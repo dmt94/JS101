@@ -182,11 +182,15 @@ start();
 let userMPay = calc(userInfo.loan, userInfo.monthlyR, userInfo.duration);
 monthPayDisplay(userMPay);
 repeat();
+end();
 
-console.log(`~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~`);
-console.log(`REVIEW:\n${userInfo.username}'s loan for $${userInfo.loan}, 
+function end() {
+  console.log(`~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~`);
+  console.log(`REVIEW:\n\n${userInfo.username}'s loan for $${userInfo.loan}, 
 with a monthly rate of ${userInfo.monthlyR.toFixed(2)} 
 will be fully paid within ${userInfo.duration} months 
 after an estimated monthly payment
 of => $${userMPay.toFixed(2)} !`);
-console.log(`~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~`);
+  console.log(`~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~`);
+}
+
