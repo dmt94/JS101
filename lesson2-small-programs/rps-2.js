@@ -1,18 +1,18 @@
-const readline = require('readline-sync'); 
-VALID_CHOICES = ['rock', 'paper', 'scissors'];
+const readline = require('readline-sync');
+const VALID_CHOICES = ['rock', 'paper', 'scissors'];
 
 function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
 function greeting() {
-  prompt('ROCK PAPER SCISSORS GAME\nGreetings!');
+  prompt('Greetings! Welcome to THE ROCK PAPER SCISSORS GAME\n');
   console.log('(⇀‸↼‶)⊃━☆ﾟ.*･');
 }
 
 function farewellMsg() {
-  prompt('Thanks for playing ROCK PAPER SCISSORS!');
-  console.log('\nLive mindfully and happily! ٩(｡•́‿•̀｡)۶\n');
+  console.log('\nThanks for playing ROCK PAPER SCISSORS!');
+  console.log('\nFarewell and be well! ٩(｡•́‿•̀｡)۶\n');
 }
 
 function userChooses() {
@@ -36,25 +36,22 @@ function userWon(choice, computerChoice) {
   if ((choice === 'rock' && computerChoice === 'scissors') ||
       (choice === 'paper' && computerChoice === 'rock') ||
       (choice === 'scissors' && computerChoice === 'paper')) {
-    return true
+    return true;
   } else if ((choice === 'rock' && computerChoice === 'paper') ||
              (choice === 'paper' && computerChoice === 'scissors') ||
              (choice === 'scissors' && computerChoice === 'rock')) {
-    return false
+    return false;
   }
   return 'tie';
 }
 
 function displayWinner(choice, computerChoice, whoWon) {
-  prompt(`You chose ${choice}. Computer chose ${computerChoice}\n`);
+  prompt(`You chose ${choice}! Computer chose ${computerChoice}!\n`);
 
-  switch (whoWon) {
-    case true: 
-      return prompt('You won! ٩(｡•́‿•̀｡)۶ \n');
-    case false:
-      return prompt('You lost! Computer won ᕙ(⇀‸↼‶)ᕗ\n');
-    case 'tie':
-      return prompt('It\'s a tie!)\n');
+  if (whoWon !== 'tie') {
+    console.log(whoWon === true ? 'You won! *dance*\n' : 'You lost! Computer won ᕙ(⇀‸↼‶)ᕗ\n');
+  } else {
+    console.log("It's a tie!\n");
   }
 }
 
@@ -75,16 +72,18 @@ function playAgain() {
 
 greeting();
 
-while(true) {
+while (true) {
   let userChoice = userChooses();
   let compChoice = compChooses();
   let didUserWin = userWon(userChoice, compChoice);
-  let displayTheWinner = displayWinner(userChoice, compChoice, didUserWin);
-  let playAgainAnswer = playAgain();
 
+  displayWinner(userChoice, compChoice, didUserWin);
+
+  let playAgainAnswer = playAgain();
+  
   if (playAgainAnswer[0] === 'n') break;
 
   console.clear();
-} 
+}
 
 farewellMsg();
