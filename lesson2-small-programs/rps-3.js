@@ -12,7 +12,7 @@ function greeting() {
 
 function farewellMsg() {
   prompt('Thanks for playing rock-paper-scissors!');
-  console.log('Live mindfully and happily! Aishteh~ ٩(｡•́‿•̀｡)۶');
+  console.log('\nLive mindfully and happily! Aishteh~ ٩(｡•́‿•̀｡)۶\n');
 }
 
 function userChooses() {
