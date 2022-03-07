@@ -92,7 +92,7 @@ function roundWinner(userChoice, computerChoice) {
   return USER_WIN_CONDITIONS[userChoice].includes(computerChoice);
 }
 
-function logWinner(whoWon) {
+function logRoundWinner(whoWon) {
   if (whoWon === "tie") {
     prompt("It's a tie!\n");
   } else if (whoWon === true) {
@@ -126,7 +126,7 @@ while (true) {
     console.clear();
 
     logChoices(usersChoice, computersChoice);
-    logWinner(didUserWin);
+    logRoundWinner(didUserWin);
     logScore(userPoints, computerPoints);
   }
 
