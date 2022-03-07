@@ -14,7 +14,7 @@ function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
-function printGreetingandRules() {
+function printGreetingAndRules() {
   prompt("Welcome to ROCK-PAPER-SCISSORS-SPOCK-LIZARD!");
   prompt("RULES:");
   console.log("ROCK beats SCISSORS and LIZARD");
@@ -103,7 +103,7 @@ function displayScore(userScore, computerScore) {
   prompt(`[YOUR SCORE: ${userScore}, COMPUTER SCORE: ${computerScore}]`);
 }
 
-printGreetingandRules();
+printGreetingAndRules();
 
 while (true) {
   let userPoints = 0;
