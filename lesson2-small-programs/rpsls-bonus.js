@@ -14,7 +14,7 @@ function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
-function printGreetingAndRules() {
+function logGreetingAndRules() {
   prompt("Welcome to ROCK-PAPER-SCISSORS-SPOCK-LIZARD!");
   prompt("RULES:");
   console.log("ROCK beats SCISSORS and LIZARD");
@@ -22,13 +22,14 @@ function printGreetingAndRules() {
   console.log("SCISSORS beats PAPER and LIZARD");
   console.log("LIZARD beats PAPER and SPOCK");
   console.log("SPOCK beats ROCK and SCISSORS\n");
+  console.log("First to win 3 matches is the GRAND WINNER!\n");
 }
 
-function printChoices(userChoice, computerChoice) {
+function logChoices(userChoice, computerChoice) {
   prompt(`You chose ${userChoice.toUpperCase()} and computer chose ${computerChoice.toUpperCase()}`);
 }
 
-function displayGrandWinner(userTotalPoints) {
+function logGrandWinner(userTotalPoints) {
   if (userTotalPoints === 3) {
     prompt(`You are the Grand Winner!\n`);
   } else {
@@ -38,17 +39,17 @@ function displayGrandWinner(userTotalPoints) {
 
 function playAgain() {
   prompt("Do you want to play again? (y/n)\n");
-  let playAnother = readline.question();
+  let playAnother = readline.question().toLowerCase();
 
   while (!['y', 'yes', 'n', 'no'].includes(playAnother)) {
     prompt("Type a valid answer (y/n)\n");
-    playAnother = readline.question();
+    playAnother = readline.question().toLowerCase();
   }
 
   return playAnother;
 }
 
-function printFarewell() {
+function logFarewell() {
   prompt(`Thanks for playing! Live long and prosper!\n`);
 }
 
@@ -89,21 +90,21 @@ function userWon(userChoice, computerChoice) {
   return USER_WIN_CONDITIONS[userChoice].includes(computerChoice);
 }
 
-function displayWinner(whoWon) {
+function logWinner(whoWon) {
   if (whoWon === 'tie') {
     prompt("It's a tie!\n");
   } else if (whoWon === true) {
-    prompt("You won!");
+    prompt("You won!\n");
   } else {
     prompt("Computer won!\n");
   }
 }
 
-function displayScore(userScore, computerScore) {
+function logScore(userScore, computerScore) {
   prompt(`[YOUR SCORE: ${userScore}, COMPUTER SCORE: ${computerScore}]`);
 }
 
-printGreetingAndRules();
+logGreetingAndRules();
 
 while (true) {
   let userPoints = 0;
@@ -116,9 +117,8 @@ while (true) {
 
     console.clear();
 
-    printChoices(usersChoice, computersChoice);
-
-    displayWinner(didUserWin);
+    logChoices(usersChoice, computersChoice);
+    logWinner(didUserWin);
 
     if (didUserWin === true) {
       userPoints += 1;
@@ -126,10 +126,10 @@ while (true) {
       computerPoints += 1;
     }
 
-    displayScore(userPoints, computerPoints);
+    logScore(userPoints, computerPoints);
   }
 
-  displayGrandWinner(userPoints);
+  logGrandWinner(userPoints);
 
   let usersPlayAgain = playAgain();
 
@@ -138,4 +138,4 @@ while (true) {
   if (usersPlayAgain[0] === 'n') break;
 }
 
-printFarewell();
+logFarewell();
