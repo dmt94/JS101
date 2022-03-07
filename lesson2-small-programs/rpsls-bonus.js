@@ -87,7 +87,7 @@ function compChooses() {
   return VALID_CHOICES[randomIndex];
 }
 
-function userWon(userChoice, computerChoice) {
+function roundWinner(userChoice, computerChoice) {
   if (userChoice === computerChoice) return "tie";
   return USER_WIN_CONDITIONS[userChoice].includes(computerChoice);
 }
@@ -115,7 +115,7 @@ while (true) {
   while (userPoints < WINNING_POINT && computerPoints < WINNING_POINT) {
     let usersChoice = userChooses();
     let computersChoice = compChooses();
-    let didUserWin = userWon(usersChoice, computersChoice);
+    let didUserWin = roundWinner(usersChoice, computersChoice);
 
     if (didUserWin === true) {
       userPoints += 1;
