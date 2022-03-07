@@ -10,6 +10,8 @@ const USER_WIN_CONDITIONS = {
   spock: ['rock', 'scissors'],
 };
 
+const WINNING_POINT = 3;
+
 function prompt(msg) {
   console.log(`=> ${msg}`);
 }
@@ -30,10 +32,10 @@ function logChoices(userChoice, computerChoice) {
 }
 
 function logGrandWinner(userTotalPoints) {
-  if (userTotalPoints === 3) {
-    prompt(`You are the Grand Winner!\n`);
+  if (userTotalPoints === WINNING_POINT) {
+    prompt("You are the Grand Winner!\n");
   } else {
-    prompt(`Computer is the Grand Winner!\n`);
+    prompt("Computer is the Grand Winner!\n");
   }
 }
 
@@ -41,8 +43,8 @@ function playAgain() {
   prompt("Do you want to play again? (y/n)\n");
   let playAnother = readline.question().toLowerCase();
 
-  while (!['y', 'yes', 'n', 'no'].includes(playAnother)) {
-    prompt("Type a valid answer (y/n)\n");
+  while (!["y", "yes", "n", "no"].includes(playAnother)) {
+    prompt("Type a valid answer (y/yes/n/no)\n");
     playAnother = readline.question().toLowerCase();
   }
 
@@ -50,7 +52,7 @@ function playAgain() {
 }
 
 function logFarewell() {
-  prompt(`Thanks for playing! Live long and prosper!\n`);
+  prompt("Thanks for playing! Live long and prosper!\n");
 }
 
 function invalidChoice(userChoice) {
@@ -91,7 +93,7 @@ function userWon(userChoice, computerChoice) {
 }
 
 function logWinner(whoWon) {
-  if (whoWon === 'tie') {
+  if (whoWon === "tie") {
     prompt("It's a tie!\n");
   } else if (whoWon === true) {
     prompt("You won!\n");
@@ -110,15 +112,10 @@ while (true) {
   let userPoints = 0;
   let computerPoints = 0;
 
-  while (userPoints < 3 && computerPoints < 3) {
+  while (userPoints < WINNING_POINT && computerPoints < WINNING_POINT) {
     let usersChoice = userChooses();
     let computersChoice = compChooses();
     let didUserWin = userWon(usersChoice, computersChoice);
-
-    console.clear();
-
-    logChoices(usersChoice, computersChoice);
-    logWinner(didUserWin);
 
     if (didUserWin === true) {
       userPoints += 1;
@@ -126,6 +123,10 @@ while (true) {
       computerPoints += 1;
     }
 
+    console.clear();
+
+    logChoices(usersChoice, computersChoice);
+    logWinner(didUserWin);
     logScore(userPoints, computerPoints);
   }
 
@@ -135,7 +136,7 @@ while (true) {
 
   console.clear();
 
-  if (usersPlayAgain[0] === 'n') break;
+  if (usersPlayAgain === "n" || usersPlayAgain === "no") break;
 }
 
 logFarewell();
