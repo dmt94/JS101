@@ -80,7 +80,7 @@ while (true) {
   displayWinner(userChoice, compChoice, didUserWin);
 
   let playAgainAnswer = playAgain();
-  
+
   if (playAgainAnswer[0] === 'n') break;
 
   console.clear();
