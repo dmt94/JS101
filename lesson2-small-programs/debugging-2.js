@@ -1,7 +1,7 @@
 // debug.js
 
 
-let second = 2; 
+
 let counter = 1;
 /* when inspecting with a debugger
 that lets you pause the program during execution,
@@ -14,10 +14,8 @@ evaluated and so assignment to 1 has not taken place
 */
 
 while (second <= 5) {
-  console.log(second);
-  console.log(counter);
+  console.log(`counter => ` +counter);
   debugger;
-  second += 1; 
   counter += 1;
 }
 

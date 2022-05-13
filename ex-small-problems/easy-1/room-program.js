@@ -13,7 +13,7 @@ let rlSync = require('readline-sync');
 function area() {
   let userL = rlSync.question("Input your length (in meters)\n");
   let userW = rlSync.question("Input your width (in meters)\n");
-  let sqMeter = userL * userW; 
+  let sqMeter = userL * userW;
   let sqFeet = (sqMeter * 10.7639);
   if (Number.isNaN(sqMeter) === true) {
     console.log('Type a valid number.')
